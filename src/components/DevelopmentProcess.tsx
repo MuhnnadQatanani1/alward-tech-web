@@ -78,13 +78,11 @@ const DevelopmentProcess = () => {
                   style={{ left: `calc(50% + ${x}px)`, top: `calc(50% + ${y}px)` }}
                 >
                   <div className={`${process.color} rounded-full p-3 shadow-lg`}>
-                    <div className="bg-white rounded-full p-6">
+                    <div className="bg-white rounded-full p-4 flex flex-col items-center justify-center">
                       {process.icon}
+                      <h4 className="text-sm font-bold text-alward-primary rtl-text mt-2">{process.title}</h4>
+                      <p className="text-xs text-gray-600 rtl-text text-center w-20">{process.description}</p>
                     </div>
-                  </div>
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 text-center w-36">
-                    <h4 className="text-lg font-bold text-alward-primary rtl-text">{process.title}</h4>
-                    <p className="text-sm text-gray-600 rtl-text mt-1">{process.description}</p>
                   </div>
                 </div>
               );
