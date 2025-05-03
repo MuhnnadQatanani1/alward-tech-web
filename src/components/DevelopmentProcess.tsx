@@ -1,57 +1,65 @@
 
 import React from "react";
 import { Lightbulb, FileText, Code, Settings, CheckCircle2, ArrowRight } from "lucide-react";
-
-const processList = [
-  {
-    icon: <Lightbulb className="w-6 h-6 text-white" />,
-    title: "الفكرة",
-    description: "جمع المتطلبات وتحليل الاحتياجات",
-    color: "bg-blue-500",
-  },
-  {
-    icon: <FileText className="w-6 h-6 text-white" />,
-    title: "التخطيط",
-    description: "تصميم النظام وهيكلة المشروع",
-    color: "bg-indigo-500",
-  },
-  {
-    icon: <Code className="w-6 h-6 text-white" />,
-    title: "التطوير",
-    description: "برمجة وتنفيذ الوظائف الأساسية",
-    color: "bg-purple-500",
-  },
-  {
-    icon: <Settings className="w-6 h-6 text-white" />,
-    title: "الاختبار",
-    description: "فحص الجودة وضمان الأداء",
-    color: "bg-pink-500",
-  },
-  {
-    icon: <CheckCircle2 className="w-6 h-6 text-white" />,
-    title: "التسليم",
-    description: "إطلاق المنتج وتدريب المستخدمين",
-    color: "bg-red-500",
-  },
-  {
-    icon: <ArrowRight className="w-6 h-6 text-white" />,
-    title: "التحسين",
-    description: "تطوير مستمر ودعم فني متواصل",
-    color: "bg-amber-500",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const DevelopmentProcess = () => {
+  const { t, language } = useLanguage();
+  
+  const processList = [
+    {
+      icon: <Lightbulb className="w-6 h-6 text-white" />,
+      title: t("الفكرة", "Idea"),
+      description: t("جمع المتطلبات وتحليل الاحتياجات", "Requirements gathering and needs analysis"),
+      color: "bg-blue-500",
+    },
+    {
+      icon: <FileText className="w-6 h-6 text-white" />,
+      title: t("التخطيط", "Planning"),
+      description: t("تصميم النظام وهيكلة المشروع", "System design and project structuring"),
+      color: "bg-indigo-500",
+    },
+    {
+      icon: <Code className="w-6 h-6 text-white" />,
+      title: t("التطوير", "Development"),
+      description: t("برمجة وتنفيذ الوظائف الأساسية", "Programming and implementing core functions"),
+      color: "bg-purple-500",
+    },
+    {
+      icon: <Settings className="w-6 h-6 text-white" />,
+      title: t("الاختبار", "Testing"),
+      description: t("فحص الجودة وضمان الأداء", "Quality assurance and performance testing"),
+      color: "bg-pink-500",
+    },
+    {
+      icon: <CheckCircle2 className="w-6 h-6 text-white" />,
+      title: t("التسليم", "Delivery"),
+      description: t("إطلاق المنتج وتدريب المستخدمين", "Product launch and user training"),
+      color: "bg-red-500",
+    },
+    {
+      icon: <ArrowRight className="w-6 h-6 text-white" />,
+      title: t("التحسين", "Improvement"),
+      description: t("تطوير مستمر ودعم فني متواصل", "Continuous development and technical support"),
+      color: "bg-amber-500",
+    },
+  ];
+
+  const rtlClass = language === "ar" ? "rtl-text" : "";
+
   return (
     <section id="process" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 rtl-text">
+        <div className={`text-center mb-16 ${rtlClass}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-alward-primary font-tajawal inline-block relative">
-            عملية التطوير
+            {t("عملية التطوير", "Development Process")}
             <span className="absolute -bottom-3 left-0 right-0 h-1 bg-alward-accent"></span>
           </h2>
           <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg font-tajawal">
-            نتبع منهجية Agile في تطوير المشاريع مما يضمن المرونة والجودة والتسليم في الوقت المحدد
+            {t(
+              "نتبع منهجية Agile في تطوير المشاريع مما يضمن المرونة والجودة والتسليم في الوقت المحدد",
+              "We follow Agile methodology in project development, ensuring flexibility, quality, and on-time delivery"
+            )}
           </p>
         </div>
 
@@ -80,8 +88,8 @@ const DevelopmentProcess = () => {
                   <div className={`${process.color} rounded-full p-3 shadow-lg`}>
                     <div className="bg-white rounded-full p-4 flex flex-col items-center justify-center">
                       {process.icon}
-                      <h4 className="text-sm font-bold text-alward-primary rtl-text mt-2">{process.title}</h4>
-                      <p className="text-xs text-gray-600 rtl-text text-center w-20">{process.description}</p>
+                      <h4 className={`text-sm font-bold text-alward-primary mt-2 ${rtlClass}`}>{process.title}</h4>
+                      <p className={`text-xs text-gray-600 text-center w-20 ${rtlClass}`}>{process.description}</p>
                     </div>
                   </div>
                 </div>

@@ -2,25 +2,33 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
+  const { t, language } = useLanguage();
+  const rtlClass = language === "ar" ? "rtl-text" : "";
+  const buttonIcon = language === "ar" ? <ArrowRight className="mr-1 h-4 w-4" /> : <ArrowRight className="ml-1 h-4 w-4" />;
+
   return (
     <section id="home" className="hero-gradient text-white pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 text-center md:text-right rtl-text animate-fade-in">
+          <div className={`md:w-1/2 text-center md:text-${language === "ar" ? "right" : "left"} ${rtlClass} animate-fade-in`}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-tajawal">
-              نحن نقدم <span className="text-alward-accent">حلول برمجية</span> مبتكرة
+              {t("نحن نقدم", "We provide")} <span className="text-alward-accent">{t("حلول برمجية", "software solutions")}</span> {t("مبتكرة", "innovative")}
             </h1>
             <p className="text-lg md:text-xl mb-8 opacity-90 max-w-xl mx-auto md:mr-0 font-tajawal">
-              شركة AlWard Tech متخصصة في تطوير البرمجيات والتطبيقات المتكاملة للشركات والمؤسسات والأفراد بمعايير عالمية
+              {t(
+                "شركة AlWard Tech متخصصة في تطوير البرمجيات والتطبيقات المتكاملة للشركات والمؤسسات والأفراد بمعايير عالمية",
+                "AlWard Tech specializes in developing integrated software and applications for companies, institutions, and individuals with international standards"
+              )}
             </p>
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className={`flex flex-wrap gap-4 justify-center md:justify-${language === "ar" ? "start" : "start"}`}>
               <Button size="lg" className="bg-white text-alward-primary hover:bg-alward-accent hover:text-white transition-all duration-300">
-                تواصل معنا
+                {t("تواصل معنا", "Contact Us")}
               </Button>
               <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-alward-primary transition-all duration-300">
-                خدماتنا <ArrowRight className="mr-1 h-4 w-4" />
+                {t("خدماتنا", "Our Services")} {buttonIcon}
               </Button>
             </div>
           </div>

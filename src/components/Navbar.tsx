@@ -1,10 +1,12 @@
 
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -24,31 +26,53 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <a href="#home" className="text-alward-dark hover:text-alward-secondary font-medium transition-colors">
-            الرئيسية
+            {t("الرئيسية", "Home")}
           </a>
           <a href="#services" className="text-alward-dark hover:text-alward-secondary font-medium transition-colors">
-            خدماتنا
+            {t("خدماتنا", "Services")}
           </a>
           <a href="#projects" className="text-alward-dark hover:text-alward-secondary font-medium transition-colors">
-            المشاريع
+            {t("المشاريع", "Projects")}
           </a>
           <a href="#process" className="text-alward-dark hover:text-alward-secondary font-medium transition-colors">
-            عملية التطوير
+            {t("عملية التطوير", "Development Process")}
           </a>
           <a href="#students" className="text-alward-dark hover:text-alward-secondary font-medium transition-colors">
-            للطلاب
+            {t("للطلاب", "For Students")}
           </a>
           <a href="#contact" className="text-alward-dark hover:text-alward-secondary font-medium transition-colors">
-            تواصل معنا
+            {t("تواصل معنا", "Contact Us")}
           </a>
         </div>
 
-        <div className="hidden md:block">
-          <Button className="bg-alward-primary hover:bg-alward-secondary text-white">تواصل الآن</Button>
+        <div className="hidden md:flex items-center space-x-4">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="rounded-full" 
+            onClick={toggleLanguage}
+            aria-label={t("تغيير اللغة", "Change language")}
+          >
+            <Languages className="h-5 w-5" />
+            <span className="ml-2 text-xs font-bold">{language === "ar" ? "EN" : "AR"}</span>
+          </Button>
+          <Button className="bg-alward-primary hover:bg-alward-secondary text-white">
+            {t("تواصل الآن", "Contact Now")}
+          </Button>
         </div>
 
         {/* Mobile menu button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center space-x-2">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="rounded-full" 
+            onClick={toggleLanguage}
+            aria-label={t("تغيير اللغة", "Change language")}
+          >
+            <Languages className="h-5 w-5" />
+            <span className="ml-1 text-xs font-bold">{language === "ar" ? "EN" : "AR"}</span>
+          </Button>
           <button onClick={toggleMenu} className="text-alward-dark focus:outline-none">
             {isMenuOpen ? (
               <X className="h-6 w-6" />
@@ -68,44 +92,46 @@ const Navbar = () => {
               className="text-alward-dark hover:text-alward-secondary font-medium px-4 py-2 hover:bg-alward-light rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
-              الرئيسية
+              {t("الرئيسية", "Home")}
             </a>
             <a 
               href="#services" 
               className="text-alward-dark hover:text-alward-secondary font-medium px-4 py-2 hover:bg-alward-light rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
-              خدماتنا
+              {t("خدماتنا", "Services")}
             </a>
             <a 
               href="#projects" 
               className="text-alward-dark hover:text-alward-secondary font-medium px-4 py-2 hover:bg-alward-light rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
-              المشاريع
+              {t("المشاريع", "Projects")}
             </a>
             <a 
               href="#process" 
               className="text-alward-dark hover:text-alward-secondary font-medium px-4 py-2 hover:bg-alward-light rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
-              عملية التطوير
+              {t("عملية التطوير", "Development Process")}
             </a>
             <a 
               href="#students" 
               className="text-alward-dark hover:text-alward-secondary font-medium px-4 py-2 hover:bg-alward-light rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
-              للطلاب
+              {t("للطلاب", "For Students")}
             </a>
             <a 
               href="#contact" 
               className="text-alward-dark hover:text-alward-secondary font-medium px-4 py-2 hover:bg-alward-light rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
-              تواصل معنا
+              {t("تواصل معنا", "Contact Us")}
             </a>
-            <Button className="bg-alward-primary hover:bg-alward-secondary text-white">تواصل الآن</Button>
+            <Button className="bg-alward-primary hover:bg-alward-secondary text-white">
+              {t("تواصل الآن", "Contact Now")}
+            </Button>
           </div>
         </div>
       )}
