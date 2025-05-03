@@ -55,7 +55,7 @@ const DevelopmentProcess = () => {
           </p>
         </div>
 
-        <div className="relative flex justify-center mb-8">
+        <div className="relative flex justify-center mb-16">
           <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-dashed border-alward-secondary flex items-center justify-center relative">
             <div className="w-48 h-48 md:w-64 md:h-64 bg-alward-light rounded-full flex items-center justify-center">
               <img 
@@ -82,9 +82,9 @@ const DevelopmentProcess = () => {
                       {process.icon}
                     </div>
                   </div>
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-center w-24">
-                    <h4 className="text-sm font-bold text-alward-primary rtl-text">{process.title}</h4>
-                    <p className="text-xs text-gray-500 rtl-text">{process.description}</p>
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 text-center w-36">
+                    <h4 className="text-lg font-bold text-alward-primary rtl-text">{process.title}</h4>
+                    <p className="text-sm text-gray-600 rtl-text mt-1">{process.description}</p>
                   </div>
                 </div>
               );
